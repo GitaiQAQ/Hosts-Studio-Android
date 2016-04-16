@@ -27,6 +27,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.LinearLayout.LayoutParams;
 
+import me.gitai.library.BuildConfig;
 import me.gitai.library.R;
 
 public class MaterialDialog {
@@ -85,6 +86,10 @@ public class MaterialDialog {
         return this;
     }
 
+    public View getView(){
+        return this.mView;
+    }
+
     public MaterialDialog setChildsVisibility(int... ids){
         for (int i = 0; i < ids.length; i++) {
             this.mView.findViewById(ids[i]).setVisibility(View.VISIBLE);
@@ -116,6 +121,19 @@ public class MaterialDialog {
 
     public View getContentView(){
         return this.mMessageContentView;
+    }
+
+    public View getChildView(int id){
+        return getContentView().findViewById(id);
+    }
+
+    public MaterialDialog setText(int id, String text){
+        ((EditText)getChildView(id)).setText(text);
+        return this;
+    }
+
+    public String getText(int id){
+        return ((TextView)getChildView(id)).getText().toString();
     }
 
     public MaterialDialog setContentChildsVisibility(int... ids){
@@ -208,8 +226,10 @@ public class MaterialDialog {
             @Override
             public void onClick(View v) {
                 if(listener!=null){
-                    if (listener.onClick(v,MaterialDialog.this.mView)){
-                        MaterialDialog.this.dismiss();
+                    if (MaterialDialog.this != null){
+                        if (listener.onClick(v,MaterialDialog.this)){
+                            MaterialDialog.this.dismiss();
+                        }
                     }
                 }else{
                     MaterialDialog.this.dismiss();
@@ -239,8 +259,10 @@ public class MaterialDialog {
             @Override
             public void onClick(View v) {
                 if(listener!=null){
-                    if (listener.onClick(v,MaterialDialog.this.mView)){
-                        MaterialDialog.this.dismiss();
+                    if (MaterialDialog.this != null){
+                        if (listener.onClick(v,MaterialDialog.this)){
+                            MaterialDialog.this.dismiss();
+                        }
                     }
                 }else{
                     MaterialDialog.this.dismiss();
@@ -267,8 +289,10 @@ public class MaterialDialog {
             @Override
             public void onClick(View v) {
                 if(listener!=null){
-                    if (listener.onClick(v,MaterialDialog.this.mView)){
-                        MaterialDialog.this.dismiss();
+                    if (MaterialDialog.this != null){
+                        if (listener.onClick(v,MaterialDialog.this)){
+                            MaterialDialog.this.dismiss();
+                        }
                     }
                 }else{
                     MaterialDialog.this.dismiss();
@@ -295,8 +319,10 @@ public class MaterialDialog {
             @Override
             public void onClick(View v) {
                 if(listener!=null){
-                    if (listener.onClick(v,MaterialDialog.this.mView)){
-                        MaterialDialog.this.dismiss();
+                    if (MaterialDialog.this != null){
+                        if (listener.onClick(v,MaterialDialog.this)){
+                            MaterialDialog.this.dismiss();
+                        }
                     }
                 }else{
                     MaterialDialog.this.dismiss();
@@ -396,7 +422,11 @@ public class MaterialDialog {
 
             if(MaterialDialog.this.mBackgroundDrawable != null) {
                 linearLayout = (LinearLayout)this.mAlertDialogWindow.findViewById(R.id.material_background);
-                linearLayout.setBackground(MaterialDialog.this.mBackgroundDrawable);
+                if (VERSION.SDK_INT > 15){
+                    linearLayout.setBackground(MaterialDialog.this.mBackgroundDrawable);
+                }else{
+                    linearLayout.setBackgroundDrawable(MaterialDialog.this.mBackgroundDrawable);
+                }
             }
 
             if(MaterialDialog.this.mMessageContentView != null) {
@@ -537,7 +567,7 @@ public class MaterialDialog {
     }
 
     public interface OnClickListener {
-        boolean onClick(View v, View MaterialDialog);
+        boolean onClick(View v, MaterialDialog materialDialog);
     }
 
     public interface OnViewInflateListener {

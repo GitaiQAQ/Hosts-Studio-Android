@@ -103,7 +103,7 @@ public class AccessView extends RelativeLayout implements View.OnClickListener {
     private MaterialDialog.OnClickListener onPositive = new MaterialDialog.OnClickListener() {
 
         @Override
-        public boolean onClick(View v, View MaterialDialog) {
+        public boolean onClick(View v, MaterialDialog materialDialog) {
             String username = et_username.getText().toString();
             String password = et_password.getText().toString();
 

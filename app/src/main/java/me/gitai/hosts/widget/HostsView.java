@@ -1,32 +1,31 @@
 package me.gitai.hosts.widget;
 
-import android.app.SearchManager;
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Filter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SearchView;
 
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
+import me.gitai.hosts.Constant;
 import me.gitai.hosts.R;
 import me.gitai.hosts.adapter.ListHostsAdapter;
 import me.gitai.hosts.entities.Host;
@@ -35,36 +34,28 @@ import me.gitai.hosts.tasks.UploadTask;
 import me.gitai.hosts.utils.HostsManager;
 import me.gitai.hosts.utils.ProgressDialogUtil;
 import me.gitai.library.util.IOUtils;
-import me.gitai.library.util.L;
 import me.gitai.library.util.StringUtils;
 import me.gitai.library.util.ToastUtil;
 import me.gitai.library.widget.MaterialDialog;
 
 /**
- * Created by dphdjy on 15-11-5.
+ * Created by gitai on 15-11-5.
  */
-public class HostsView extends LinearLayout implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, SearchView.OnQueryTextListener, SearchView.OnCloseListener {
+public class HostsView extends LinearLayout
+        implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener, SearchView.OnQueryTextListener, SearchView.OnCloseListener {
     private ProgressDialogUtil mProgressDialog;
 
     private ListView mListView;
     private ListHostsAdapter mAdapter;
 
     private HostsManager hostsManager;
-    private List<Host> hosts;
 
-    private int add_index,edit_index;
-    private EditText et_add_hostname,et_add_ip,et_add_commit,et_edit_hostname,et_edit_ip,et_edit_commit,et_updata_title,et_updata_hosts,et_updata_description;
-    private CheckBox cb_updata_private;
-
-    private MaterialDialog addMaterialDialog,editMaterialDialog,uploadMaterialDialog;
-
-    private String mUrl = "location";
+    private MaterialDialog addMaterialDialog,editMaterialDialog,uploadMaterialDialog,batchIpSetMaterialDialog;
 
     private View searchView;
     private SearchView et_search;
     private CheckBox cb_regex;
     private int currPosition = -1;
-    private String tempHostsFile;
     private String UID;
 
     public HostsView(Context context) {
@@ -74,8 +65,8 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
 
     public HostsView(Context context, String url) {
         super(context);
-        this.mUrl = url;
         init();
+        loadHosts(url);
     }
 
     public HostsView(Context context, AttributeSet attrs) {
@@ -115,118 +106,46 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
         cb_regex  = (CheckBox)findViewById(R.id.cb_regex);
 
         addMaterialDialog = new MaterialDialog(getContext())
-                .setContentView(R.layout.dialog_hosts_add, new MaterialDialog.OnViewInflateListener() {
-                    @Override
-                    public boolean onInflate(View v) {
-                        et_add_ip = (EditText)v.findViewById(R.id.et_ip);
-                        et_add_hostname = (EditText)v.findViewById(R.id.et_hostname);
-                        et_add_commit = (EditText)v.findViewById(R.id.et_commit);
-                        return false;
-                    }
-                })
+                .setContentView(R.layout.dialog_hosts_add)
                 .setTitle(R.string.dialog_host_add_title)
-                .setPositiveButton(android.R.string.ok, new MaterialDialog.OnClickListener() {
-                    @Override
-                    public boolean onClick(View v, View MaterialDialog) {
-                        String ip = et_add_ip.getText().toString();
-                        String hostname = et_add_hostname.getText().toString();
-                        String commit = et_add_commit.getText().toString();
-
-                        if (StringUtils.isEmpty(ip) || StringUtils.isEmpty(hostname)) {
-                            ToastUtil.showId(R.string.toast_ip_or_hostname_is_empty);
-                            return false;
-                        }
-
-                        Host host = new Host(ip, hostname, commit);
-
-                        hosts.add(add_index, host);
-
-                        notifyDataSetChanged(add_index, 1);
-                        return true;
-                    }
-                })
                 .setNegativeButton(android.R.string.cancel,null);
         editMaterialDialog = new MaterialDialog(getContext())
-                .setContentView(R.layout.dialog_hosts_edit, new MaterialDialog.OnViewInflateListener() {
-                    @Override
-                    public boolean onInflate(View v) {
-                        et_edit_ip = (EditText)v.findViewById(R.id.et_ip);
-                        et_edit_hostname = (EditText)v.findViewById(R.id.et_hostname);
-                        et_edit_commit = (EditText)v.findViewById(R.id.et_commit);
-                        return false;
-                    }
-                })
+                .setContentView(R.layout.dialog_hosts_edit)
                 .setTitle(R.string.dialog_host_edit_title)
-                .setPositiveButton(android.R.string.ok, new MaterialDialog.OnClickListener() {
-                    @Override
-                    public boolean onClick(View v, View MaterialDialog) {
-                        String ip = et_edit_ip.getText().toString();
-                        String hostname = et_edit_hostname.getText().toString();
-                        String commit = et_edit_commit.getText().toString();
-
-                        if (StringUtils.isEmpty(ip) || StringUtils.isEmpty(hostname)) {
-                            ToastUtil.showId(R.string.toast_ip_or_hostname_is_empty);
-                            return false;
-                        }
-
-                        Host host = hosts.get(edit_index);
-                        host.updata(ip, hostname, commit);
-
-                        mAdapter.updateHosts(hosts);
-
-                        return true;
-                    }
-                })
                 .setNegativeButton(android.R.string.cancel,null);
         uploadMaterialDialog = new MaterialDialog(getContext())
                 .setTitle(R.string.dialog_upload_title)
-                .setContentView(R.layout.dialog_hosts_updata, new MaterialDialog.OnViewInflateListener() {
+                .setNegativeButton(android.R.string.cancel,null);
+        batchIpSetMaterialDialog = new MaterialDialog(getContext())
+                .setTitle(R.string.dialog_host_edit_title)
+                .setContentView(R.layout.dialog_hosts_edit, new MaterialDialog.OnViewInflateListener() {
                     @Override
                     public boolean onInflate(View v) {
-                        et_updata_title = (EditText) v.findViewById(R.id.et_title);
-                        et_updata_hosts = (EditText) v.findViewById(R.id.et_hosts);
-                        cb_updata_private = (CheckBox) v.findViewById(R.id.cb_private);
-                        et_updata_description = (EditText) v.findViewById(R.id.et_description);
+                        ((EditText)v.findViewById(R.id.et_hostname)).setEnabled(false);
+                        ((EditText)v.findViewById(R.id.et_commit)).setVisibility(View.GONE);
                         return false;
                     }
-                })
-                .setPositiveButton(android.R.string.ok, new MaterialDialog.OnClickListener() {
-                    @Override
-                    public boolean onClick(View v, View MaterialDialog) {
-                        String title = et_updata_title.getText().toString();
-                        String description = et_updata_description.getText().toString();
+                });
+    }
 
-                        if (StringUtils.isEmpty(title)) {
-                            ToastUtil.showId(R.string.toast_project_title_is_empty);
-                            return false;
-                        }
-
-                        File tempFile = new File(String.format(Locale.US,"%s/%s",getContext().getFilesDir().getAbsolutePath(),tempHostsFile));
-
-                        Upload upload = new Upload(getContext(),title,tempFile,cb_updata_private.isChecked(),description,UID, System.currentTimeMillis());
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
-                            upload.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-                        }else{
-                            upload.execute();
-                        }
-
-                        return true;
-                    }
-                })
-                .setNegativeButton(android.R.string.cancel,null);
-        refresh();
+    public void dismiss(){
+        if (mProgressDialog != null) mProgressDialog.dismiss();
     }
 
     public String getTitle(){
-        return IOUtils.getFileNameWithoutExtension(mUrl);
+        return IOUtils.getFileNameWithoutExtension(hostsManager.getURI());
     }
 
     public String getUrl(){
-        return mUrl;
+        return hostsManager.getURI();
+    }
+
+    public String getHash(){
+        return hostsManager.getURIHash();
     }
 
     public int size(){
-        return hosts.size();
+        return hostsManager.getHosts().size();
     }
 
     public ListView getListView(){
@@ -269,18 +188,22 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
         return false;
     }
 
-    private void refresh(){
-        hostsManager = new HostsManager(getContext());
+    public void refresh(String url){
+        hostsManager.setURI(url);
+        refresh();
+    }
+
+    public void refresh(){
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
-            new HostsLoador().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, mUrl);
+            new HostsLoador().executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
         }else{
-            new HostsLoador().execute(mUrl);
+            new HostsLoador().execute();
         }
     }
 
     public void loadHosts(String url){
-        mUrl = url;
-        refresh();
+        hostsManager = new HostsManager(getContext(), url);
+        refresh(url);
     }
 
     public void saveHosts(){
@@ -292,7 +215,8 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
     }
 
     public void saveAs(OutputStream output) throws IOException {
-        IOUtils.copy(getContext().openFileInput(hostsManager.createTempHostsFile(getContext())),output);
+        hostsManager.createTempHostsFile(true);
+        IOUtils.copy(new FileReader(new File(hostsManager.getTempHostsFile())),output);
     }
 
     public void uploadHosts(){
@@ -301,46 +225,99 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
             ToastUtil.showId(R.string.toast_unauthorized);
             return;
         }
-        tempHostsFile = hostsManager.createTempHostsFile(getContext());
-        et_updata_hosts.setText(tempHostsFile);
-        uploadMaterialDialog.show();
-    }
+        final String tempHostsFile = hostsManager.getTempHostsFile();
+        uploadMaterialDialog
+                .setText(R.id.et_hosts, tempHostsFile)
+                .setPositiveButton(android.R.string.ok, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public boolean onClick(View v, MaterialDialog materialDialog) {
+                        String title = materialDialog.getText(R.id.et_title);
+                        String description = materialDialog.getText(R.id.et_description);
 
-    public void addHost(int index, Host host){
-        hosts.add(index, host);
-        notifyDataSetChanged(index, 1);
+                        if (StringUtils.isEmpty(title)) {
+                            ToastUtil.showId(R.string.toast_project_title_is_empty);
+                            return false;
+                        }
+
+                        Upload upload = new Upload(getContext(),title,
+                                new File(String.format(Locale.US,"%s/%s",getContext().getFilesDir().getAbsolutePath()
+                                        ,tempHostsFile)),
+                                ((CheckBox)materialDialog.getChildView(R.id.cb_private)).isChecked(),
+                                description,UID, System.currentTimeMillis());
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB){
+                            upload.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
+                        }else{
+                            upload.execute();
+                        }
+
+                        return true;
+                    }
+                })
+                .show();
     }
 
     public void add(){
         add(0);
     }
 
-    public void add(int index){
-        add_index = index;
-        et_add_hostname.setText("");
-        et_add_ip.setText("");;
-        et_add_commit.setText("");
-        addMaterialDialog.show();
+    public void add(final int index){
+        addMaterialDialog
+            .setText(R.id.et_ip, "")
+            .setText(R.id.et_hostname, "")
+            .setText(R.id.et_commit, "")
+            .setPositiveButton(android.R.string.ok, new MaterialDialog.OnClickListener() {
+                @Override
+                public boolean onClick(View v, MaterialDialog materialDialog) {
+                    String ip = materialDialog.getText(R.id.et_ip);
+                    String hostname = materialDialog.getText(R.id.et_hostname);
+                    String commit = materialDialog.getText(R.id.et_commit);
+
+                    if (StringUtils.isEmpty(ip) || StringUtils.isEmpty(hostname)) {
+                        ToastUtil.showId(R.string.toast_ip_or_hostname_is_empty);
+                        return false;
+                    }
+
+                    hostsManager.getHosts().add(index, new Host(ip, hostname, commit));
+
+                    notifyDataSetChanged(index, 1);
+                    return true;
+                }
+            }).show();
     }
 
     public void edit(int index){
-        edit_index = index;
-        Host host = hosts.get(index);
-        if (!host.isBuild()){
-            host.build();
-        }
-        et_edit_hostname.setText(host.getHostName());
-        et_edit_ip.setText(host.getIp());;
-        et_edit_commit.setText(host.getComment());
-        editMaterialDialog.show();
+        final Host host = hostsManager.getHosts().get(index);
+        editMaterialDialog
+                .setText(R.id.et_ip, host.getIp())
+                .setText(R.id.et_hostname, host.getHostName())
+                .setText(R.id.et_commit, host.getComment())
+                .setPositiveButton(android.R.string.ok, new MaterialDialog.OnClickListener() {
+                    @Override
+                    public boolean onClick(View v, MaterialDialog materialDialog) {
+                        String ip = materialDialog.getText(R.id.et_ip);
+                        String hostname = materialDialog.getText(R.id.et_hostname);
+                        String commit = materialDialog.getText(R.id.et_commit);
+
+                        if (StringUtils.isEmpty(ip) || StringUtils.isEmpty(hostname)) {
+                            ToastUtil.showId(R.string.toast_ip_or_hostname_is_empty);
+                            return false;
+                        }
+
+                        host.updata(ip, hostname, commit);
+
+                        mAdapter.updateHosts(hostsManager.getHosts());
+
+                        return true;
+                    }
+                }).show();
     }
 
     public void getHost(int index){
-        hosts.get(index);
+        hostsManager.getHosts().get(index);
     }
 
     public void removeHost(int index){
-        hosts.remove(index);
+        hostsManager.getHosts().remove(index);
         notifyDataSetChanged(index, -1);
     }
 
@@ -354,6 +331,7 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
         if (!reg){
             keyword = String.format(".*%s.*", keyword);
         }
+        List<Host> hosts = hostsManager.getHosts();
         for (int i = 0; i < mListView.getCount(); i++) {
             if (hosts.get(i).getHostName().matches(keyword)) {
                 mListView.setItemChecked(i, true);
@@ -368,15 +346,21 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
         for (int i = 0; i < mListView.getCount(); i++) {
             mListView.setItemChecked(i, false);
         }
+        Set<String> ips = new HashSet();
+        List<Host> hosts = hostsManager.getHosts();
         for (int j = 0; j < checked.size(); j++) {
             if (checked.valueAt(j)) {
-                String ip1 = hosts.get(checked.keyAt(j)).getIp();
-                for (int i = 0; i < mListView.getCount(); i++) {
-                    String ip2 = hosts.get(i).getIp();
+                ips.add(hosts.get(checked.keyAt(j)).getIp());
+            }
+        }
+        Iterator it = ips.iterator();
+        while (it.hasNext()){
+            String ip = (String)it.next();
+            for (int i = 0; i < mListView.getCount(); i++) {
+                String ip2 = hosts.get(i).getIp();
 
-                    if (ip1.equals(ip2)) {
-                        mListView.setItemChecked(i, true);
-                    }
+                if (ip.equals(ip2)) {
+                    mListView.setItemChecked(i, true);
                 }
             }
         }
@@ -405,6 +389,7 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
 
     public void selectToggle(){
         SparseBooleanArray checked = mListView.getCheckedItemPositions().clone();
+        List<Host> hosts = hostsManager.getHosts();
         for (int i = 0; i < checked.size(); i++) {
             if (checked.valueAt(i)) {
                 hosts.get(checked.keyAt(i)).toggleComment();
@@ -415,6 +400,7 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
 
     public void deleteSelect(){
         SparseBooleanArray checked = mListView.getCheckedItemPositions().clone();
+        List<Host> hosts = hostsManager.getHosts();
         for (int i = checked.size()-1; i >= 0 ; i--) {
             if (checked.valueAt(i)) {
                 hosts.remove(checked.keyAt(i));
@@ -426,15 +412,35 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
 
     // TODO:
     public void batchIpSet(){
+        SparseBooleanArray checked = mListView.getCheckedItemPositions();
+        //,et_batch_ip,et_batch_commit
+        batchIpSetMaterialDialog
+            .setText(R.id.et_hostname,
+                    String.format(getContext().getString(R.string.toast_hosts_select), checked.size()))
+            .setPositiveButton(android.R.string.ok, new MaterialDialog.OnClickListener() {
+                @Override
+                public boolean onClick(View v, MaterialDialog materialDialog) {
 
+                    String ip = materialDialog.getText(R.id.et_ip);
+
+                    if (StringUtils.isEmpty(ip)) {
+                        ToastUtil.showId(R.string.toast_ip_is_empty);
+                        return false;
+                    }
+
+                    batchIpSet(ip);
+
+                    return true;
+                }
+            }).show();
     }
 
     public void batchIpSet(String ip){
         SparseBooleanArray checked = mListView.getCheckedItemPositions();
+        List<Host> hosts = hostsManager.getHosts();
         for (int i = 0; i < checked.size(); i++) {
             if (checked.valueAt(i)) {
-                hosts.get(checked.keyAt(i))
-                        .setIp(ip);
+                hosts.get(checked.keyAt(i)).setIp(ip);
             }
         }
         mAdapter.updateHosts(hosts);
@@ -442,7 +448,7 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
 
     public List<Host> cut(int index){
         List<Host> copyData = new ArrayList<>();
-        SparseBooleanArray checked = mListView.getCheckedItemPositions();
+        List<Host> hosts = hostsManager.getHosts();
         copyData.add(hosts.get(index));
         hosts.remove(index);
         mListView.setItemChecked(index, false);
@@ -453,7 +459,8 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
     public List<Host> cut(){
         List<Host> copyData = new ArrayList<>();
         SparseBooleanArray checked = mListView.getCheckedItemPositions();
-        for (int i = 0; i < checked.size(); i++) {
+        List<Host> hosts = hostsManager.getHosts();
+        for (int i = checked.size(); i >= 0; i--) {
             if (checked.valueAt(i)) {
                 copyData.add(hosts.get(checked.keyAt(i)));
                 hosts.remove(checked.keyAt(i));
@@ -466,6 +473,7 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
 
     public List<Host> copy(int index){
         List<Host> copyData = new ArrayList<>();
+        List<Host> hosts = hostsManager.getHosts();
         copyData.add(hosts.get(index));
         return copyData;
     }
@@ -473,6 +481,7 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
     public List<Host> copy(){
         List<Host> copyData = new ArrayList<>();
         SparseBooleanArray checked = mListView.getCheckedItemPositions();
+        List<Host> hosts = hostsManager.getHosts();
         for (int i = 0; i < checked.size(); i++) {
             if (checked.valueAt(i)) {
                 copyData.add(hosts.get(checked.keyAt(i)));
@@ -482,6 +491,7 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
     }
 
     public void paste(int index, List<Host> mHosts){
+        List<Host> hosts = hostsManager.getHosts();
         hosts.addAll(index, mHosts);
         notifyDataSetChanged(index, mHosts.size());
     }
@@ -492,6 +502,7 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
 
     public void notifyDataSetChanged(int index, int offset){
         SparseBooleanArray checked = mListView.getCheckedItemPositions().clone();
+        List<Host> hosts = hostsManager.getHosts();
         mAdapter.updateHosts(hosts);
         for (int i = 0; i < checked.size(); i++) {
             boolean isCheck = checked.valueAt(i);
@@ -510,7 +521,9 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
 
         @Override
         protected void onPreExecute() {
-            mProgressDialog.show();
+            if (mProgressDialog != null) {
+                mProgressDialog.show();
+            }
             super.onPreExecute();
         }
 
@@ -519,66 +532,71 @@ public class HostsView extends LinearLayout implements AdapterView.OnItemClickLi
             if (s!=null){
                 ToastUtil.show(s);
             }
-
-            if (mProgressDialog != null) {
-                mProgressDialog.dismiss();
-            }
+            if (mProgressDialog != null) mProgressDialog.dismiss();
             super.onPostExecute(s);
         }
     }
 
-    public class HostsLoador extends AsyncTask<String,Void,Void>{
+    public class HostsLoador extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
-            mProgressDialog.show();
+            if (mProgressDialog != null){
+                mProgressDialog.show();
+            }
             super.onPreExecute();
         }
 
         @Override
-        protected Void doInBackground(String... params) {
-            if (StringUtils.hasText(params[0]) && !params[0].equals("location")){
-                hosts = hostsManager.getHosts(params[0],true);
-            }else{
-                hosts = hostsManager.getHosts(true);
-            }
+        protected Void doInBackground(Void... params) {
+            hostsManager.getHosts(true);
             return null;
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            if (mProgressDialog != null) {
-                mProgressDialog.dismiss();
-            }
-            mAdapter.updateHosts(hosts);
+            if (mProgressDialog != null) mProgressDialog.dismiss();
+            mAdapter.updateHosts(hostsManager.getHosts());
             super.onPostExecute(aVoid);
         }
     }
 
-    public class HostSaver extends AsyncTask<Void,Void,String>{
+    public class HostSaver extends AsyncTask<Void,Void,Integer>{
         @Override
         protected void onPreExecute() {
-            mProgressDialog.show();
-            mProgressDialog.setMessage(R.string.saving);
+            if (mProgressDialog != null){
+                mProgressDialog.show();
+                mProgressDialog.setMessage(R.string.saving);
+            }
             super.onPreExecute();
         }
 
         @Override
-        protected String doInBackground(Void... params) {
-            return hostsManager.saveHosts();
+        protected Integer doInBackground(Void... params) {
+            if(hostsManager.getURI().endsWith("whilelist")){
+                return hostsManager.saveHosts(Constant.FILE_FOLDER_NAME + "whilelist", false);
+            }
+            return hostsManager.saveToSysHosts();
         }
 
         @Override
-        protected void onPostExecute(String string) {
-            if (mProgressDialog != null) {
-                mProgressDialog.dismiss();
+        protected void onPostExecute(Integer resultCode) {
+            if (mProgressDialog != null) mProgressDialog.dismiss();
+            String msg = getContext().getString(R.string.msg_save_success);;
+            switch (resultCode){
+                case HostsManager.SUCCESS:
+                    msg = getContext().getString(R.string.msg_save_success);
+                    break;
+                case HostsManager.ERROR_CAN_NOT_CREATE_TEMPORARY_HOSTS_FILE:
+                    msg = getContext().getString(R.string.cant_create_temporary_hosts_file);
+                    break;
+                case HostsManager.ERROR_CAN_NOT_GET_ROOT_ACCESS:
+                    msg = getContext().getString(R.string.cant_get_root_access);
+                    break;
+                default:
+                    msg = String.format("Unknow,resultCode: %s", resultCode);
             }
-            mAdapter.updateHosts(hosts);
-            if (StringUtils.hasText(string)){
-                ToastUtil.show(string);
-            }else{
-                ToastUtil.show(getContext().getString(R.string.msg_save_success));
-            }
-            super.onPostExecute(string);
+            ToastUtil.show(msg);
+            super.onPostExecute(resultCode);
         }
     }
 

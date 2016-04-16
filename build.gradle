@@ -4,7 +4,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:1.5.+'
         classpath 'pl.itako:icon-version:1.1.2'
     }
 }
@@ -23,25 +23,24 @@ subprojects {
                 appname : "Hosts Studio",
                 applicationId : "dphdjy.hostseditor",
 
-                compileSdkVersion : 22,
-                buildToolsVersion : "22.0.1",
-                minSdkVersion : 11,
-                targetSdkVersion : 22,
+                compileSdkVersion : 23,
+                buildToolsVersion : "23.0.1",
+                minSdkVersion : 15,
+                targetSdkVersion : 23,
 
                 releaseSigning : [
-                        storeFile : '',
-                        storePassword : '',
-                        alias : '',
-                        aliasPassword: ''
+                        storeFile : System.getenv("KEYSTORE"),
+                        storePassword : System.getenv("KEYSTORE_PASSWORD"),
+                        alias : System.getenv("KEY_ALIAS"),
+                        aliasPassword: System.getenv("KEY_PASSWORD")
                 ],
 
-                versionCode : 31,
-                versionName : "0.2.1"
+                versionCode : 35,
+                versionName : "0.2.5"
         ]
 
         versions = [
-        	androidSupport : "22.0.0",
-            eventbus : "2.4.0"
+            androidSupport : "23.1.1"
         ]
     }
 }

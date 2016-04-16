@@ -17,7 +17,8 @@ public class UpdataTask extends AsyncTask<Void, Void, UpdataInfo> {
 	protected UpdataInfo doInBackground(Void... voids) {
 		UpdataInfo updata=null;
 		try {
-			String result = new HttpUtils().sendSync(HttpRequest.HttpMethod.GET, Constant.API_UPDATA).readString();//HttpUtil.requestByHttpGet1(Constant.API_UPDATA);
+			String result = new HttpUtils().sendSync(HttpRequest.HttpMethod.GET, Constant.API_UPDATA).readString();
+			//HttpUtil.requestByHttpGet1(Constant.API_UPDATA);
 			if (result.isEmpty()) {
 				throw new Exception();
 			}

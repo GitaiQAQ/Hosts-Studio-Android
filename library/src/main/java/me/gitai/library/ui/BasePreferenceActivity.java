@@ -27,15 +27,22 @@ public class BasePreferenceActivity extends PreferenceActivity{
 		setContentView(R.layout.view_list_empty);
         getListView().setEmptyView(getWindow().findViewById(R.id.empty));
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getListView().setPadding(0,0,0,0);
+        }
+
 		//initSystemBar
-		setFitsSystemWindows(true);
-		setTranslucentStatus(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+            setFitsSystemWindows(true);
+            setTranslucentStatus(true);
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.primary_dark);
+        }
 
-		getActionBar().setDisplayShowHomeEnabled(false);
-
-		SystemBarTintManager tintManager = new SystemBarTintManager(this);
-		tintManager.setStatusBarTintEnabled(true);
-		tintManager.setStatusBarTintResource(R.color.primary_dark);
+        if (getActionBar() != null){
+            getActionBar().setDisplayShowHomeEnabled(false);
+        }
 	}
 
 	@Override

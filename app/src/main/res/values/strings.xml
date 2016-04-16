@@ -15,6 +15,8 @@
     <string name="action_login">Login</string>
     <string name="action_hosts_upload">Upload</string>
     <string name="action_hosts_properties">Properties</string>
+    <string name="action_hosts_history">History</string>
+    <string name="action_hosts_reload">Reload</string>
 
     <string name="dialog_host_add_title">Add Host</string>
     <string name="dialog_host_edit_title">Edit Host</string>
@@ -90,11 +92,13 @@
     <string name="failed_running_root_command">Failed running root command</string>
 
 
+    <string name="toast_hosts_select">Select %1$d items</string>
     <string name="toast_hosts_cut">Cut %1$d items</string>
     <string name="toast_hosts_copy">Copy %1$d items</string>
     <string name="toast_hosts_paste">Paste %1$d items</string>
     <string name="toast_application_is_up_to_date">Application is up to date</string>
 
+    <string name="toast_ip_is_empty">IP address is empty.</string>
     <string name="toast_ip_or_hostname_is_empty">IP address or Hostname is empty.</string>
     <string name="toast_username_or_password_is_empty">Username or Password is empty.</string>
 
@@ -133,9 +137,14 @@
     <string name="preference_model_quickload_summary">Load hosts without parse before use.</string>
 
     <string name="preference_system_default_title">Default hosts</string>
+    <string name="preference_while_list_title">While List</string>
     <string name="preference_os_info_title">Operating system</string>
     <string name="preference_os_info_summary">[No Data]</string>
     <string name="preference_application_rate_app_title">Rate App</string>
     <string name="preference_application_rate_app_summary">Share your review</string>
 
+    <string name="prefs_app_donate">Donate</string>
+    <string name="prefs_app_donate_summary">Alipay: i@gitai.me ($1)</string>
+
+    <string name="prefs_app_version">Application version</string>
 </resources>

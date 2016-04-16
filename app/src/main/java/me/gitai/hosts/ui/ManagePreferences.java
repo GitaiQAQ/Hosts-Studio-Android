@@ -12,8 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 
-import com.umeng.analytics.MobclickAgent;
-
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -41,13 +39,6 @@ public class ManagePreferences extends BasePreferenceActivity {
     protected void onResume() {
         super.onResume();
         accessView.refesh();
-        MobclickAgent.onResume(this);
-    }
-
-    @Override
-    public void onPause(){
-        super.onPause();
-        MobclickAgent.onPause(this);
     }
 
     @Override
@@ -83,7 +74,7 @@ public class ManagePreferences extends BasePreferenceActivity {
                         .setContentView(view_dialog)
                         .setPositiveButton(getString(android.R.string.ok), new MaterialDialog.OnClickListener() {
                             @Override
-                            public boolean onClick(View v, View MaterialDialog) {
+                            public boolean onClick(View v, MaterialDialog materialDialog) {
                                 Intent intent = new Intent(ManagePreferences.this, MainActivity.class);
                                 intent.setData(Uri.parse(et_url.getText().toString()));
                                 startActivity(intent);
@@ -97,9 +88,11 @@ public class ManagePreferences extends BasePreferenceActivity {
             }
         });
 
-        Intent intent = new Intent(ManagePreferences.this, MainActivity.class);
-        intent.setData(Uri.parse("default"));
-        findPreference(Constant.PREFERENCE_KEY_SYSTEM_DEFAULT).setIntent(intent);
+        findPreference(Constant.PREFERENCE_KEY_SYSTEM_DEFAULT)
+                .setIntent(new Intent(ManagePreferences.this, MainActivity.class).setData(Uri.parse("default")));
+
+        findPreference(Constant.PREFERENCE_KEY_WHILELIST).setIntent(
+                new Intent(ManagePreferences.this, MainActivity.class).setData(Uri.parse("whilelist")));
 
         reset_settings = findPreference(Constant.PREFERENCE_KEY_RESET_SETTINGS);
         clear_caches = findPreference(Constant.PREFERENCE_KEY_CLEAR_CACHES);
@@ -127,6 +120,8 @@ public class ManagePreferences extends BasePreferenceActivity {
                 return false;
             }
         });
+
+        findPreference(Constant.PREFERENCE_KEY_ABOUT_VERSION).setSummary(String.format("%s %s(%s)", BuildConfig.APPLICATION_ID, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE));
     }
 
     @Override

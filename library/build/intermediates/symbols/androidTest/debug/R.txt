@@ -29,5 +29,6 @@ int layout layout_materialdialog 0x7f030000
 int layout view_empty 0x7f030001
 int layout view_list_empty 0x7f030002
 int string app_name 0x7f060000
-int string view_empty 0x7f060001
-int string view_empty_desc 0x7f060002
+int string internal_storage 0x7f060001
+int string view_empty 0x7f060002
+int string view_empty_desc 0x7f060003

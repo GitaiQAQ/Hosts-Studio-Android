@@ -76,6 +76,14 @@
         android:title="@string/action_hosts_properties">
     </item>
     <item
+        android:id="@+id/hosts_history"
+        android:title="@string/action_hosts_history">
+    </item>
+    <item
+        android:id="@+id/hosts_reload"
+        android:title="@string/action_hosts_reload">
+    </item>
+    <item
         android:id="@+id/action_settings"
         android:title="@string/action_setting"/>
 </menu>

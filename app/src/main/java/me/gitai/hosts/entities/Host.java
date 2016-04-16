@@ -92,26 +92,31 @@ public class Host {
     }
 
     public String getIp() {
+        if (!isBuild())build();
         return mIp;
     }
     
     public void setIp(String mIp) {
+        if (!isBuild())build();
 		this.mIp = mIp;
 	}
 
     public String getHostName() {
+        if (!isBuild())build();
         return mHostName;
     }
 
     public void setHostName(String mHostName) {
-        this.mHostName = mHostName;
+        if (!isBuild())build();this.mHostName = mHostName;
     }
 
     public String getComment() {
+        if (!isBuild())build();
         return mComment;
     }
     
     public void setComment(String mComment) {
+        if (!isBuild())build();
 		this.mComment = mComment;
 	}
 
@@ -214,6 +219,7 @@ public class Host {
             return false;
         }
         Host other = (Host) obj;
+        if (isBuild()) build();
         if (mComment == null) {
             if (other.mComment != null) {
                 return false;

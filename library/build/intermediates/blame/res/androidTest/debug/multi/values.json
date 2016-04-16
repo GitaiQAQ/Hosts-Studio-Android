@@ -1,0 +1,230 @@
+[
+    {
+        "outputFile": "/home/i/workspace/Hosts/Android/library/build/intermediates/res/merged/androidTest/debug/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 40,
+                    "endOffset": 91
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 96,
+                    "endColumn": 49,
+                    "endOffset": 141
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 146,
+                    "endColumn": 47,
+                    "endOffset": 189
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 194,
+                    "endColumn": 41,
+                    "endOffset": 231
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 6,
+                    "startColumn": 4,
+                    "startOffset": 236,
+                    "endColumn": 39,
+                    "endOffset": 271
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 7,
+                    "startColumn": 4,
+                    "startOffset": 276,
+                    "endColumn": 45,
+                    "endOffset": 317
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 8,
+                    "startColumn": 4,
+                    "startOffset": 322,
+                    "endColumn": 41,
+                    "endOffset": 359
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 364,
+                    "endColumn": 46,
+                    "endOffset": 406
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 411,
+                    "endColumn": 47,
+                    "endOffset": 454
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 459,
+                    "endColumn": 46,
+                    "endOffset": 501
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 506,
+                    "endColumn": 48,
+                    "endOffset": 550
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 555,
+                    "endColumn": 53,
+                    "endOffset": 604
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 609,
+                    "endColumn": 57,
+                    "endOffset": 662
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 667,
+                    "endColumn": 55,
+                    "endOffset": 718
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 723,
+                    "endColumn": 44,
+                    "endOffset": 763
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 768,
+                    "endColumn": 61,
+                    "endOffset": 825
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 768,
+                        "endColumn": 61,
+                        "endOffset": 825
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 830,
+                    "endColumn": 48,
+                    "endOffset": 874
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 879,
+                    "endColumn": 73,
+                    "endOffset": 948
+                },
+                "from": {
+                    "file": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/values/values.xml"
+                }
+            }
+        ]
+    }
+]

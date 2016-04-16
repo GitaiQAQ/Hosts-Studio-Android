@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="me.gitai.library"
-    android:versionCode="31"
-    android:versionName="0.2.1" >
+    android:versionCode="35"
+    android:versionName="0.2.5" >
 
     <uses-sdk
-        android:minSdkVersion="11"
-        android:targetSdkVersion="22" />
+        android:minSdkVersion="15"
+        android:targetSdkVersion="23" />
 
     <application
         android:allowBackup="true"

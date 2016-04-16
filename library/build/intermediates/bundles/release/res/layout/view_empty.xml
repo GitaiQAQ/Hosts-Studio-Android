@@ -21,4 +21,4 @@
         android:text="@string/view_empty_desc"
         android:textSize="12sp"/>
 
-</LinearLayout><!-- From: file:/home/dphdjy/workspace/Hosts/Android/library/src/main/res/layout/view_empty.xml -->
+</LinearLayout>

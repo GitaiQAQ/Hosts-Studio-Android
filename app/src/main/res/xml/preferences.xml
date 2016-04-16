@@ -47,6 +47,10 @@
             android:title="@string/preference_system_default_title">
         </Preference>
         <Preference
+            android:key="while_list"
+            android:title="@string/preference_while_list_title">
+        </Preference>
+        <Preference
             android:key="reset_settings"
             android:title="@string/preference_reset_settings_title"
             android:summary="@string/preference_reset_settings_summary"/>
@@ -56,7 +60,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/preference_category_about">
         <Preference
-            android:key="help_feedback"
+            android:key="about_help_feedback"
             android:title="@string/preference_help_feedback_title">
             <intent
                 android:action="android.intent.action.VIEW"
@@ -64,24 +68,24 @@
             </intent>
         </Preference>
         <Preference
-            android:title="@string/preference_application_rate_app_title"
-            android:summary="@string/preference_application_rate_app_summary">
+            android:key="about_rate_app"
+            android:title="@string/preference_application_rate_app_title">
             <intent
                 android:action="android.intent.action.VIEW"
                 android:data="market://details?id=dphdjy.hostseditor">
             </intent>
         </Preference>
-        <me.gitai.hosts.widget.LicensePreference
-            android:key="application_open_source_license"
-            android:title="@string/preference_application_open_source_license_title"
-            android:summary="@string/preference_application_open_source_license_summary"/>
-        <me.gitai.hosts.widget.VersionPreference
-            android:key="application_version"
-            android:title="@string/preference_application_version_title"
-            android:summary="@string/preference_application_version_summary"/>
-        <me.gitai.library.widget.OSPreference
-            android:key="os_info"
-            android:title="@string/preference_os_info_title"
-            android:summary="@string/preference_os_info_summary"/>
+        <Preference
+            android:key="about_donate"
+            android:title="@string/prefs_app_donate"
+            android:summary="@string/prefs_app_donate_summary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://gitai.me/donate">
+            </intent>
+        </Preference>
+        <Preference
+            android:key="about_version"
+            android:title="@string/prefs_app_version"/>
     </PreferenceCategory>
 </PreferenceScreen>

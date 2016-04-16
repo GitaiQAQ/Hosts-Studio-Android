@@ -23,19 +23,15 @@ public class BaseActivity extends Activity{
 
 		setContentView(R.layout.view_empty);
         //initSystemBarTint();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT && Build.VERSION.SDK_INT <= Build.VERSION_CODES.LOLLIPOP) {
+            setFitsSystemWindows(true);
+            setTranslucentStatus(true);
+            SystemBarTintManager tintManager = new SystemBarTintManager(this);
+            tintManager.setStatusBarTintEnabled(true);
+            tintManager.setStatusBarTintResource(R.color.primary_dark);
+        }
 	}
-
-    protected void initSystemBarTint(){
-        //initSystemBar
-        setFitsSystemWindows(true);
-        setTranslucentStatus(true);
-
-        getActionBar().setDisplayShowHomeEnabled(false);
-
-        SystemBarTintManager tintManager = new SystemBarTintManager(this);
-        tintManager.setStatusBarTintEnabled(true);
-        tintManager.setStatusBarTintResource(R.color.primary_dark);
-    }
 
 	@Override
 	protected void onResume() {

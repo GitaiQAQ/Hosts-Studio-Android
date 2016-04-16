@@ -1,0 +1,22 @@
+[
+    {
+        "merged": "/home/i/workspace/Hosts/Android/library/build/intermediates/res/merged/androidTest/debug/drawable/material_dialog_window.xml",
+        "source": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/drawable/material_dialog_window.xml"
+    },
+    {
+        "merged": "/home/i/workspace/Hosts/Android/library/build/intermediates/res/merged/androidTest/debug/drawable/material_card_nos_pressed.xml",
+        "source": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/drawable/material_card_nos_pressed.xml"
+    },
+    {
+        "merged": "/home/i/workspace/Hosts/Android/library/build/intermediates/res/merged/androidTest/debug/drawable/material_card.xml",
+        "source": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/drawable/material_card.xml"
+    },
+    {
+        "merged": "/home/i/workspace/Hosts/Android/library/build/intermediates/res/merged/androidTest/debug/drawable/material_card_nos.xml",
+        "source": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/drawable/material_card_nos.xml"
+    },
+    {
+        "merged": "/home/i/workspace/Hosts/Android/library/build/intermediates/res/merged/androidTest/debug/drawable/button.xml",
+        "source": "/home/i/workspace/Hosts/Android/library/build/intermediates/bundles/debug/res/drawable/button.xml"
+    }
+]

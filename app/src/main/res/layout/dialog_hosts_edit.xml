@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/et_ip"
-        android:hint="@string/dialog_host_ip" />
+        android:hint="@string/dialog_host_ip"/>
 
     <EditText
         android:layout_width="match_parent"

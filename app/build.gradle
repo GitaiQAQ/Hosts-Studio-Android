@@ -4,6 +4,8 @@ apply plugin: 'icon-version'
 apply from: '../buildscripts/utils.gradle'
 
 android {
+    useLibrary 'org.apache.http.legacy'
+
     compileSdkVersion config.compileSdkVersion
     buildToolsVersion config.buildToolsVersion
 
@@ -78,7 +80,4 @@ android {
 dependencies {
     compile project(':library')
     compile fileTree(include: ['*.jar'], dir: 'libs')
-
-    //compile "de.greenrobot:eventbus:${versions.eventbus}"
-    compile 'com.umeng.analytics:analytics:latest.integration'
 }

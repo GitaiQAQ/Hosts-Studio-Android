@@ -3,5 +3,6 @@
 
     <string name="view_empty">Not found</string>
     <string name="view_empty_desc">We couldn\'t find any things.</string>
+    <string name="internal_storage">Internal storage</string>
 
 </resources>

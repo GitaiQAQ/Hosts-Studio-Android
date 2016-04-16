@@ -17,4 +17,4 @@
         layout="@layout/view_empty"
         android:layout_gravity="center_horizontal" />
 
-</LinearLayout><!-- From: file:/home/dphdjy/workspace/Hosts/Android/library/src/main/res/layout/view_list_empty.xml -->
+</LinearLayout>

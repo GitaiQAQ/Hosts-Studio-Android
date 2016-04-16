@@ -15,6 +15,8 @@
     <string name="action_login">登陆</string>
     <string name="action_hosts_upload">上传</string>
     <string name="action_hosts_properties">属性</string>
+    <string name="action_hosts_history">历史</string>
+    <string name="action_hosts_reload">重载</string>
 
     <string name="dialog_host_add_title">添加</string>
     <string name="dialog_host_edit_title">编辑</string>
@@ -90,8 +92,10 @@
     <string name="toast_hosts_cut">剪切 %1$d 一个条目</string>
     <string name="toast_hosts_copy">复制 %1$d 个条目</string>
     <string name="toast_hosts_paste">粘贴 %1$d 个条目</string>
+    <string name="toast_hosts_select">选择 %1$d 个条目</string>
     <string name="toast_application_is_up_to_date">已经升级到最新版本</string>
 
+    <string name="toast_ip_is_empty">IP为空</string>
     <string name="toast_ip_or_hostname_is_empty">IP或者主机名为空</string>
     <string name="toast_username_or_password_is_empty">用户名或者密码为空</string>
 
@@ -126,6 +130,7 @@
     <string name="preference_model_quickload_title">快速加载(20x)</string>
     <string name="preference_model_quickload_summary">加载Hosts条目时不进行预解析</string>
     <string name="preference_system_default_title">默认hosts</string>
+    <string name="preference_while_list_title">白名单</string>
     <string name="preference_os_info_title">操作系统</string>
     <string name="preference_os_info_summary">[暂无数据]</string>
     <string name="preference_application_rate_app_title">评价应用</string>
@@ -133,5 +138,10 @@
     <string name="dialog_licenses_title">开源许可</string>
     <string name="toast_project_title_is_empty">标题不可为空</string>
     <string name="toast_unauthorized">未授权</string>
+
+    <string name="prefs_app_donate">捐赠</string>
+    <string name="prefs_app_donate_summary">支付宝: i@gitai.me (￥1)</string>
+
+    <string name="prefs_app_version">版本</string>
 
 </resources>

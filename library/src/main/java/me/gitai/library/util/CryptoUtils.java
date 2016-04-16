@@ -31,19 +31,19 @@ public final class CryptoUtils {
     private CryptoUtils() {
     }
 
-    static String getRandomString() {
+    public static String getRandomString() {
         SecureRandom random = new SecureRandom();
         return String.valueOf(random.nextLong());
     }
 
-    static byte[] getRandomBytes(int size) {
+    public static byte[] getRandomBytes(int size) {
         SecureRandom random = new SecureRandom();
         byte[] bytes = new byte[size];
         random.nextBytes(bytes);
         return bytes;
     }
 
-    static byte[] getRawBytes(String text) {
+    public static byte[] getRawBytes(String text) {
         try {
             return text.getBytes(ENC_UTF8);
         } catch (UnsupportedEncodingException e) {
@@ -51,7 +51,7 @@ public final class CryptoUtils {
         }
     }
 
-    static String getString(byte[] data) {
+    public static String getString(byte[] data) {
         try {
             return new String(data, ENC_UTF8);
         } catch (UnsupportedEncodingException e) {
@@ -59,11 +59,11 @@ public final class CryptoUtils {
         }
     }
 
-    static byte[] base64Decode(String text) {
+    public static byte[] base64Decode(String text) {
         return Base64.decode(text, Base64.NO_WRAP);
     }
 
-    static String base64Encode(byte[] data) {
+    public static String base64Encode(byte[] data) {
         return Base64.encodeToString(data, Base64.NO_WRAP);
     }
 
@@ -519,7 +519,7 @@ public final class CryptoUtils {
             return getDigest(SHA_256).digest(data);
         }
 
-        private static MessageDigest getDigest(String algorithm) {
+        public static MessageDigest getDigest(String algorithm) {
             try {
                 return MessageDigest.getInstance(algorithm);
             } catch (NoSuchAlgorithmException e) {

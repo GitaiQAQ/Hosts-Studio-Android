@@ -23,13 +23,17 @@ public class Constant {
     public static String TAG_FAILURE = "hostseditor_failure";
     public static String TAG_NOTHING = "hostseditor_no_data";
 
-    public static String CACHE_FOLDER_NAME = "";
+    public static String DATA_FOLDER_NAME = "/data/data/" + BuildConfig.APPLICATION_ID + "/";
+    public static String FILE_FOLDER_NAME = DATA_FOLDER_NAME + "files/";
+    public static String LOGS_FOLDER_NAME = DATA_FOLDER_NAME + "logs/";
 
     public static String PREFERENCE_KEY_MODEL_QUICKLOAD = "model_quickload";
     public static String PREFERENCE_KEY_PROJECT_DIY = "project_diy";
     public static String PREFERENCE_KEY_PROJECT_PUBLIC = "project_public";
     public static String PREFERENCE_KEY_PROJECT_PRIVATE = "project_private";
     public static String PREFERENCE_KEY_SYSTEM_DEFAULT = "system_default";
+    public static String PREFERENCE_KEY_WHILELIST = "while_list";
     public static String PREFERENCE_KEY_RESET_SETTINGS = "reset_settings";
     public static String PREFERENCE_KEY_CLEAR_CACHES = "clear_caches";
+    public static String PREFERENCE_KEY_ABOUT_VERSION = "about_version";
 }

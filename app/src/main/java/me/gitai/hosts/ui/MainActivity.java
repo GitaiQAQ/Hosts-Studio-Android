@@ -64,9 +64,16 @@ public class MainActivity extends BaseActivity{
         init();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        for (int i = 0; i < mViewFlipper.getChildCount() - 1; i++) {
+            ((HostsView)mViewFlipper.getView(i)).dismiss();
+        }
+    }
+
     private void init(){
         setContentView(R.layout.activity_main);
-        initSystemBarTint();
 
         mViewFlipper = (WindowsViewFlipper)findViewById(R.id.viewFlipper);
         windowListAdapter = new WindowListAdapter(mViewFlipper);
@@ -87,12 +94,11 @@ public class MainActivity extends BaseActivity{
         }catch(Exception ex){
             ToastUtil.show(ex);
         }
-
     }
 
     private void doCreateView(String url){
         if (url != null){
-            HostsView hostsView = new HostsView(this,url);
+            HostsView hostsView = new HostsView(this, url);
 
             registerForContextMenu(hostsView.getListView());
             mViewFlipper.addView(hostsView);
@@ -222,6 +228,15 @@ public class MainActivity extends BaseActivity{
                         .setNegativeButton(android.R.string.ok, null)
                         .show();
                 break;
+            case R.id.hosts_history:
+                Intent project = new Intent(this, ProjectPreferences.class);
+                project.putExtra("project_type" , "history");
+                project.putExtra("project_id", mViewFlipper.getCurrentView().getHash());
+                startActivity(project);
+                break;
+            case R.id.hosts_reload:
+                mViewFlipper.getCurrentView().refresh();
+                break;
             case R.id.action_settings:
                 Intent intent = new Intent(this, ManagePreferences.class);
                 startActivityForResult(intent, ManagePreferences.RESULT_CODE);
@@ -281,7 +296,7 @@ public class MainActivity extends BaseActivity{
                 break;
             case 200:
                 if (intent!=null){
-                    String path = FileUtils.getPath(this,intent.getData());
+                    String path = FileUtils.getPath(this, intent.getData());
                     if (StringUtils.hasText(path)){
                         doCreateView("file://"+path);
                     }
