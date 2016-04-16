@@ -1,0 +1,4 @@
+<resources>
+    <dimen name="margin">16dp</dimen>
+    <dimen name="windows_list_item_padding">15dp</dimen>
+</resources>

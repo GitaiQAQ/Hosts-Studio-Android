@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Library</string>
+
+    <string name="view_empty">Not found</string>
+    <string name="view_empty_desc">We couldn\'t find any things.</string>
+
+</resources>

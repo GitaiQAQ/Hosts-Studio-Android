@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:persistent="true">
+    <PreferenceCategory android:title="@string/preference_category_general">
+        <SwitchPreference android:key="model_quickload"
+            android:title="@string/preference_model_quickload_title"
+            android:summary="@string/preference_model_quickload_summary"
+            android:defaultValue="false"/>
+        <Preference
+            android:title="@string/preference_console_title"
+            android:summary="@string/preference_console_summary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://hostseditor.avosapps.com/console">
+            </intent>
+        </Preference>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preference_category_project">
+        <PreferenceScreen
+            android:key="project_diy"
+            android:title="@string/preference_project_diy_title">
+        </PreferenceScreen>
+        <PreferenceScreen
+            android:key="project_public"
+            android:title="@string/preference_project_public_title">
+            <intent android:action="me.gitai.hosts.ui.ProjectPreferences">
+                <extra
+                    android:name="project_type"
+                    android:value="public"/>
+            </intent>
+        </PreferenceScreen>
+
+        <PreferenceScreen
+            android:key="project_private"
+            android:title="@string/preference_project_private_title"
+            android:enabled="false">
+            <intent android:action="me.gitai.hosts.ui.ProjectPreferences">
+                <extra
+                    android:name="project_type"
+                    android:value="private"/>
+            </intent>
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preference_category_data">
+        <Preference
+            android:key="system_default"
+            android:title="@string/preference_system_default_title">
+        </Preference>
+        <Preference
+            android:key="reset_settings"
+            android:title="@string/preference_reset_settings_title"
+            android:summary="@string/preference_reset_settings_summary"/>
+        <Preference
+            android:key="clear_caches"
+            android:title="@string/preference_clear_caches_title"/>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/preference_category_about">
+        <Preference
+            android:key="help_feedback"
+            android:title="@string/preference_help_feedback_title">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://hostseditor.avosapps.com/help/android">
+            </intent>
+        </Preference>
+        <Preference
+            android:title="@string/preference_application_rate_app_title"
+            android:summary="@string/preference_application_rate_app_summary">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="market://details?id=dphdjy.hostseditor">
+            </intent>
+        </Preference>
+        <me.gitai.hosts.widget.LicensePreference
+            android:key="application_open_source_license"
+            android:title="@string/preference_application_open_source_license_title"
+            android:summary="@string/preference_application_open_source_license_summary"/>
+        <me.gitai.hosts.widget.VersionPreference
+            android:key="application_version"
+            android:title="@string/preference_application_version_title"
+            android:summary="@string/preference_application_version_summary"/>
+        <me.gitai.library.widget.OSPreference
+            android:key="os_info"
+            android:title="@string/preference_os_info_title"
+            android:summary="@string/preference_os_info_summary"/>
+    </PreferenceCategory>
+</PreferenceScreen>

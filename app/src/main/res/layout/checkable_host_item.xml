@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp">
+    <me.gitai.hosts.widget.InertCheckBox
+        android:id="@+id/hostItemCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusable="false" />
+    <TextView
+        android:id="@+id/hostItemIp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/hostItemCheckbox"
+        android:layout_centerVertical="true"
+        android:focusable="false"
+        android:paddingLeft="8dp"
+        android:paddingRight="18dp"
+        android:textIsSelectable="false"
+        android:textSize="16sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/hostItemIp"
+        android:focusable="false"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/hostItemHostname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:textIsSelectable="false"
+            android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/hostItemComment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:visibility="visible"/>
+    </LinearLayout>
+</RelativeLayout>

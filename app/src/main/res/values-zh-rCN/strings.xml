@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Hosts  Studio</string>
+
+    <string name="activity_editor">Hosts</string>
+    <string name="activity_setting">设置</string>
+    <string name="activity_project">项目</string>
+
+    <string name="action_host_add">添加</string>
+    <string name="action_host_edit">编辑</string>
+    <string name="action_host_save">保存</string>
+    <string name="action_host_backup">备份</string>
+    <string name="action_share">分享</string>
+    <string name="action_setting">设置</string>
+    <string name="action_login">登陆</string>
+    <string name="action_hosts_upload">上传</string>
+    <string name="action_hosts_properties">属性</string>
+
+    <string name="dialog_host_add_title">添加</string>
+    <string name="dialog_host_edit_title">编辑</string>
+    <string name="dialog_host_ip">IP地址</string>
+    <string name="dialog_host_hostname">域名</string>
+    <string name="dialog_host_comment">注释</string>
+    <string name="dialog_upload">上传</string>
+    <string name="dialog_addtoornew">追加/新建</string>
+    <string name="dialog_msg_addtoornew">追加/新建这个列表</string>
+
+    <string name="dialog_upload_title">标题</string>
+    <string name="dialog_upload_private">私有</string>
+    <string name="dialog_upload_des">描述</string>
+
+    <string name="dialog_login_username">用户名&amp;邮箱</string>
+    <string name="dialog_login_password">密码</string>
+
+    <string name="dialog_hosts_diy_title">自定义源</string>
+    <string name="dialog_hosts_diy_summary">输入自定义源以加载hosts.\n\n实例\n1.http(s)://example.com/hosts\n2.file://sdcard/hosts\n3.ftp://127.0.0.1/hosts\n</string>
+    <string name="dialog_hosts_diy_url">URL/Path</string>
+
+    <string name="dialog_properties_title">属性</string>
+    <string name="dialog_properties_msg">文件名:%1$s\n路径:%2$s\n数量:%3$s\n</string>
+
+    <string name="btn_ok">确认</string>
+    <string name="btn_cancel">取消</string>
+    <string name="btn_updata">升级</string>
+    <string name="btn_new">新建</string>
+    <string name="btn_add">追加</string>
+    
+    <string name="list_empty">未找到 \'hosts\' 记录.</string>
+    <string name="list_empty_desc">未找到任何host记录，你可以添加一些.</string>
+
+    <string name="list_menu_selected">选择(%1$d)</string>
+    <string name="list_menu_selected_none">未选择</string>
+    <string name="list_menu_edit">编辑</string>
+    <string name="list_menu_cut">剪切</string>
+    <string name="list_menu_copy">复制</string>
+    <string name="list_menu_paste">粘贴</string>
+    <string name="list_menu_add">插入</string>
+    <string name="list_menu_upload">上传</string>
+    <string name="list_menu_selected_delete">删除(%1$d)</string>
+    <string name="list_menu_delete">删除</string>
+    <string name="list_menu_toggle">切换</string>
+    <string name="list_menu_selecte_all">全选</string>
+    <string name="list_menu_unselect">取消</string>
+    <string name="list_menu_selecte_reversing">反选</string>
+    <string name="list_menu_selecte_search">搜索</string>
+    <string name="list_menu_selecte_same_ips">同IP</string>
+    <string name="list_menu_selecte_set_ip">设定IP</string>
+    <string name="list_menu_selecte_copy">复制</string>
+    <string name="list_menu_selecte_cut">剪切</string>
+    <string name="list_menu_selecte_paste">粘贴</string>
+
+    <string name="batch_ips_set">批量设置IP</string>
+
+    <string name="same_ips_too_much">选取太多</string>
+
+    <string name="list_error_title">错误</string>
+    <string name="list_error_content">无法编辑hosts文件, 检查是否拥有 SuperUser 权限.\n并且授予本app相关权限.</string>
+
+    <!-- Loading messages -->
+    <string name="loading">加载中......</string>
+    <string name="saving">正在保存......</string>
+    <string name="updata">升级中......</string>
+
+    <string name="msg_save_success">保存成功</string>
+
+    <string name="cant_get_root_access">保存失败，检查是否拥有 root/SuperUser 权限.\n并且授予本app相关权限.</string>
+    <string name="cant_create_temporary_hosts_file">无法创建临时文件</string>
+    <string name="failed_running_root_command">执行命令失败</string>
+
+    <string name="toast_hosts_cut">剪切 %1$d 一个条目</string>
+    <string name="toast_hosts_copy">复制 %1$d 个条目</string>
+    <string name="toast_hosts_paste">粘贴 %1$d 个条目</string>
+    <string name="toast_application_is_up_to_date">已经升级到最新版本</string>
+
+    <string name="toast_ip_or_hostname_is_empty">IP或者主机名为空</string>
+    <string name="toast_username_or_password_is_empty">用户名或者密码为空</string>
+
+    <string name="preference_category_general">全局</string>
+    <string name="preference_category_about">关于</string>
+    <string name="preference_category_data">数据</string>
+    <string name="preference_category_project">项目</string>
+
+    <string name="preference_application_open_source_license_title">开源许可</string>
+    <string name="preference_application_open_source_license_summary">在本项目中引用的开源库</string>
+
+    <string name="preference_application_version_title">应用版本</string>
+
+    <string name="preference_help_feedback_title"><![CDATA[帮助 & 反馈]]></string>
+
+    <string name="preference_reset_settings_title">应用重置</string>
+    <string name="preference_reset_settings_summary">重置全部设定到默认</string>
+
+    <string name="preference_clear_caches_title">清理缓存</string>
+
+    <string name="preference_application_version_summary">[暂无数据]</string>
+
+    <string name="preference_project_diy_title">自定义</string>
+
+    <string name="preference_project_public_title">开放项目</string>
+
+    <string name="preference_project_private_title">私有项目</string>
+
+    <string name="preference_console_title">控制台</string>
+    <string name="preference_console_summary">网址\nhttps://hostseditor.avosapps.com/console</string>
+
+    <string name="preference_model_quickload_title">快速加载(20x)</string>
+    <string name="preference_model_quickload_summary">加载Hosts条目时不进行预解析</string>
+    <string name="preference_system_default_title">默认hosts</string>
+    <string name="preference_os_info_title">操作系统</string>
+    <string name="preference_os_info_summary">[暂无数据]</string>
+    <string name="preference_application_rate_app_title">评价应用</string>
+    <string name="preference_application_rate_app_summary">分享你的评论</string>
+    <string name="dialog_licenses_title">开源许可</string>
+    <string name="toast_project_title_is_empty">标题不可为空</string>
+    <string name="toast_unauthorized">未授权</string>
+
+</resources>

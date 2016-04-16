@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+apply plugin: 'icon-version'
+
+apply from: '../buildscripts/utils.gradle'
+
+android {
+    compileSdkVersion config.compileSdkVersion
+    buildToolsVersion config.buildToolsVersion
+
+    defaultConfig {
+        applicationId config.applicationId
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.targetSdkVersion
+        versionCode config.versionCode
+        versionName config.versionName
+
+        buildConfigField "boolean", "CRASHLYTICS_ENABLED", "${isCiBuild()}"
+        buildConfigField "boolean", "LEAK_CANARY_ENABLED", "${!isCiBuild()}"
+
+        buildConfigField "String", "BUILD_TIME", "\"${getBuildTime()}\""
+        buildConfigField "String", "GIT_SHA", "\"${getGitSha()}\""
+        buildConfigField "String", "BUILD_NUMBER", "\"${getCiBuildNumber()}\""
+    }
+
+    signingConfigs {
+        release {
+            if (config.releaseSigning.storePassword != null) {
+                storeFile file(config.releaseSigning.storeFile)
+                storePassword config.releaseSigning.storePassword
+                keyAlias config.releaseSigning.alias
+                keyPassword config.releaseSigning.aliasPassword
+            }
+
+        }
+    }
+
+    buildTypes {
+        debug {
+            //applicationIdSuffix = ".debug"
+            versionNameSuffix "-${getCiBuildNumber()}"
+        }
+
+        release {
+            zipAlignEnabled true
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                def outputFile = output.outputFile
+                if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                    def fileName = outputFile.name.replace(".apk", "-" + defaultConfig.versionName + "-c" + defaultConfig.versionCode + ".apk")
+                    output.outputFile = new File(outputFile.parent, fileName)
+                }
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'LICENSE'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'NOTICE.txt'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/NOTICE'
+    }
+}
+
+dependencies {
+    compile project(':library')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    //compile "de.greenrobot:eventbus:${versions.eventbus}"
+    compile 'com.umeng.analytics:analytics:latest.integration'
+}
