@@ -35,8 +35,8 @@ subprojects {
                         aliasPassword: System.getenv("KEY_PASSWORD")
                 ],
 
-                versionCode : 35,
-                versionName : "0.2.5"
+                versionCode : 36,
+                versionName : "0.2.5.1"
         ]
 
         versions = [

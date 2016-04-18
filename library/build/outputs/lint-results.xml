@@ -16,7 +16,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="                return String.format(&quot;%1$d.%2$d&quot;, gles_version >> 16, gles_version &amp; 0x00001111);"
         errorLine2="                              ~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/AndroidUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/AndroidUtils.java"
             line="1511"
             column="31"/>
     </issue>
@@ -36,7 +36,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="            return f1.getName().toLowerCase().compareTo("
         errorLine2="                                ~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/FileUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/FileUtils.java"
             line="481"
             column="33"/>
     </issue>
@@ -56,7 +56,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="                    f2.getName().toLowerCase());"
         errorLine2="                                 ~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/FileUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/FileUtils.java"
             line="482"
             column="34"/>
     </issue>
@@ -76,7 +76,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="        String resStr = String.format(RETURN_RESULT_FORMAT, stateCode, insertRes);"
         errorLine2="                               ~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/jsevaluator/safebridge/JsCallJava.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/jsevaluator/safebridge/JsCallJava.java"
             line="192"
             column="32"/>
     </issue>
@@ -96,7 +96,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="        String execJs = String.format(CALLBACK_JS_FORMAT, mInjectedName, mIndex, mIsPermanent, sb.toString());"
         errorLine2="                               ~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/jsevaluator/safebridge/JsCallback.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/jsevaluator/safebridge/JsCallback.java"
             line="51"
             column="32"/>
     </issue>
@@ -116,7 +116,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="        String lcStr = str.substring(0, prefix.length()).toLowerCase();"
         errorLine2="                                                         ~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/StringUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/StringUtils.java"
             line="432"
             column="58"/>
     </issue>
@@ -136,7 +136,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="        String lcPrefix = prefix.toLowerCase();"
         errorLine2="                                 ~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/StringUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/StringUtils.java"
             line="433"
             column="34"/>
     </issue>
@@ -156,7 +156,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="                .toLowerCase();"
         errorLine2="                 ~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/StringUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/StringUtils.java"
             line="457"
             column="18"/>
     </issue>
@@ -176,7 +176,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="        String lcSuffix = suffix.toLowerCase();"
         errorLine2="                                 ~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/StringUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/StringUtils.java"
             line="458"
             column="34"/>
     </issue>
@@ -196,7 +196,7 @@ If you want the methods to just perform ASCII replacement, for example to conver
         errorLine1="        return String.format(&quot;%.1f %sB&quot;, bytes / Math.pow(unit, exp), pre);"
         errorLine2="                      ~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/StringUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/StringUtils.java"
             line="1511"
             column="23"/>
     </issue>
@@ -217,7 +217,7 @@ If your code is *deliberately* accessing newer APIs, and you have ensured (e.g. 
         errorLine2="                                                ~~~~~~~~~~~~~~~~~~~~~~~~~"
         quickfix="studio,adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/ViewUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/ViewUtils.java"
             line="65"
             column="49"/>
     </issue>
@@ -242,7 +242,7 @@ Similarly, you can use tools:targetApi=&quot;11&quot; in an XML file to indicate
         errorLine2="                                          ~~~~~~~~~~~~~"
         quickfix="studio,adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/FileUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/FileUtils.java"
             line="274"
             column="43"/>
     </issue>
@@ -267,7 +267,7 @@ Similarly, you can use tools:targetApi=&quot;11&quot; in an XML file to indicate
         errorLine2="                                         ~~~~~~~~~~~~~"
         quickfix="studio,adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/FileUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/FileUtils.java"
             line="278"
             column="42"/>
     </issue>
@@ -292,7 +292,7 @@ Similarly, you can use tools:targetApi=&quot;11&quot; in an XML file to indicate
         errorLine2="                                                       ~~~~~~~~~~~~~"
         quickfix="studio,adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/FileUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/FileUtils.java"
             line="282"
             column="56"/>
     </issue>
@@ -317,7 +317,7 @@ Similarly, you can use tools:targetApi=&quot;11&quot; in an XML file to indicate
         errorLine2="                                                    ~~~~~~~~~~~~~"
         quickfix="studio,adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/FileUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/FileUtils.java"
             line="295"
             column="53"/>
     </issue>
@@ -342,7 +342,7 @@ Similarly, you can use tools:targetApi=&quot;11&quot; in an XML file to indicate
         errorLine2="                                                       ~~~~~~~~~~~~~"
         quickfix="studio,adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/FileUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/FileUtils.java"
             line="303"
             column="56"/>
     </issue>
@@ -362,7 +362,7 @@ Therefore, you should either use the form of the SimpleDateFormat constructor wh
         errorLine1="            new SimpleDateFormat(&quot;[yyyyMMdd_hhmmss]&quot;);"
         errorLine2="            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/IOUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/IOUtils.java"
             line="1243"
             column="13"/>
     </issue>
@@ -379,7 +379,7 @@ Therefore, you should either use the form of the SimpleDateFormat constructor wh
         errorLine2="    ~~~~~~~~~~~~~~~~~~~~~~~~~~"
         quickfix="studio">
         <location
-            file="/home/i/workspace/Hosts/Android/library/build.gradle"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/build.gradle"
             line="12"
             column="5"/>
     </issue>
@@ -397,7 +397,7 @@ Therefore, you should either use the form of the SimpleDateFormat constructor wh
         errorLine1="  mWebView.addJavascriptInterface(jsInterface, JsEvaluator.JS_NAMESPACE);"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/jsevaluator/WebViewWrapper.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/jsevaluator/WebViewWrapper.java"
             line="31"
             column="12"/>
     </issue>
@@ -415,7 +415,7 @@ Therefore, you should either use the form of the SimpleDateFormat constructor wh
         errorLine1="  mWebView.addJavascriptInterface(obj,name);"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/jsevaluator/WebViewWrapper.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/jsevaluator/WebViewWrapper.java"
             line="48"
             column="12"/>
     </issue>
@@ -431,7 +431,7 @@ Therefore, you should either use the form of the SimpleDateFormat constructor wh
         errorLine1="                    cipher = Cipher.getInstance(&quot;AES/ECB/PKCS7Padding&quot;);"
         errorLine2="                                                ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/CryptoUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/CryptoUtils.java"
             line="253"
             column="49"/>
     </issue>
@@ -453,7 +453,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="        SecureRandom random = new SecureRandom();"
         errorLine2="        ~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/CryptoUtils.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/CryptoUtils.java"
             line="35"
             column="9"/>
     </issue>
@@ -471,7 +471,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="  mWebView.addJavascriptInterface(obj,name);"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/java/me/gitai/library/util/jsevaluator/WebViewWrapper.java"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/java/me/gitai/library/util/jsevaluator/WebViewWrapper.java"
             line="48"
             column="12"/>
     </issue>
@@ -488,7 +488,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         quickfix="studio,adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/layout/layout_materialdialog.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/layout/layout_materialdialog.xml"
             line="69"
             column="17"/>
     </issue>
@@ -504,7 +504,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="  &lt;color name=&quot;primary&quot;>#3F51B5&lt;/color>"
         errorLine2="         ~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/colors.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/colors.xml"
             line="3"
             column="10"/>
     </issue>
@@ -520,7 +520,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="  &lt;color name=&quot;primary_light&quot;>#C5CAE9&lt;/color>"
         errorLine2="         ~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/colors.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/colors.xml"
             line="5"
             column="10"/>
     </issue>
@@ -536,7 +536,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="  &lt;color name=&quot;accent&quot;>#FFEB3B&lt;/color>"
         errorLine2="         ~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/colors.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/colors.xml"
             line="6"
             column="10"/>
     </issue>
@@ -552,7 +552,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="  &lt;color name=&quot;primary_text&quot;>#212121&lt;/color>"
         errorLine2="         ~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/colors.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/colors.xml"
             line="7"
             column="10"/>
     </issue>
@@ -568,7 +568,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="  &lt;color name=&quot;secondary_text&quot;>#727272&lt;/color>"
         errorLine2="         ~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/colors.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/colors.xml"
             line="8"
             column="10"/>
     </issue>
@@ -584,7 +584,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="  &lt;color name=&quot;icons&quot;>#FFFFFF&lt;/color>"
         errorLine2="         ~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/colors.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/colors.xml"
             line="9"
             column="10"/>
     </issue>
@@ -600,7 +600,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="  &lt;color name=&quot;divider&quot;>#B6B6B6&lt;/color>"
         errorLine2="         ~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/colors.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/colors.xml"
             line="10"
             column="10"/>
     </issue>
@@ -616,7 +616,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="  &lt;color name=&quot;lite_blue&quot;>#ff359ff2&lt;/color>"
         errorLine2="         ~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/colors.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/colors.xml"
             line="14"
             column="10"/>
     </issue>
@@ -632,7 +632,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="    &lt;dimen name=&quot;activity_horizontal_margin&quot;>16dp&lt;/dimen>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/dimens.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/dimens.xml"
             line="2"
             column="12"/>
     </issue>
@@ -648,7 +648,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="    &lt;dimen name=&quot;activity_vertical_margin&quot;>16dp&lt;/dimen>"
         errorLine2="           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/values/dimens.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/values/dimens.xml"
             line="3"
             column="12"/>
     </issue>
@@ -665,7 +665,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine2="    ^"
         quickfix="adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/layout/layout_materialdialog.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/layout/layout_materialdialog.xml"
             line="13"
             column="5"/>
     </issue>
@@ -683,7 +683,7 @@ This lint rule is mostly informational; it does not accurately detect whether cr
         errorLine1="    &lt;application android:allowBackup=&quot;true&quot; android:label=&quot;@string/app_name&quot;>"
         errorLine2="    ^">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/AndroidManifest.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/AndroidManifest.xml"
             line="3"
             column="5"/>
     </issue>
@@ -706,7 +706,7 @@ In Android Studio and Eclipse there are quickfixes to automatically extract this
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
         quickfix="adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/layout/layout_materialdialog.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/layout/layout_materialdialog.xml"
             line="30"
             column="17"/>
     </issue>
@@ -729,7 +729,7 @@ In Android Studio and Eclipse there are quickfixes to automatically extract this
         errorLine2="                    ~~~~~~~~~~~~~~~~~~~~~~"
         quickfix="adt">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/layout/layout_materialdialog.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/layout/layout_materialdialog.xml"
             line="51"
             column="21"/>
     </issue>
@@ -749,7 +749,7 @@ For XML attributes such as paddingLeft and `layout_marginLeft`, use `paddingStar
         errorLine1="                android:layout_marginLeft=&quot;23dp&quot;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/layout/layout_materialdialog.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/layout/layout_materialdialog.xml"
             line="31"
             column="17"/>
     </issue>
@@ -769,7 +769,7 @@ For XML attributes such as paddingLeft and `layout_marginLeft`, use `paddingStar
         errorLine1="                android:layout_marginRight=&quot;24dp&quot;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/layout/layout_materialdialog.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/layout/layout_materialdialog.xml"
             line="33"
             column="17"/>
     </issue>
@@ -789,7 +789,7 @@ For XML attributes such as paddingLeft and `layout_marginLeft`, use `paddingStar
         errorLine1="                android:layout_marginLeft=&quot;24dp&quot;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/layout/layout_materialdialog.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/layout/layout_materialdialog.xml"
             line="39"
             column="17"/>
     </issue>
@@ -809,7 +809,7 @@ For XML attributes such as paddingLeft and `layout_marginLeft`, use `paddingStar
         errorLine1="                android:layout_marginRight=&quot;23dp&quot;"
         errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~">
         <location
-            file="/home/i/workspace/Hosts/Android/library/src/main/res/layout/layout_materialdialog.xml"
+            file="/home/i/AndroidStudioProjects/Hosts-Studio/library/src/main/res/layout/layout_materialdialog.xml"
             line="40"
             column="17"/>
     </issue>

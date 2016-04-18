@@ -414,7 +414,7 @@ public class HostsManager {
             FileOutputStream out = new FileOutputStream(creatFileIfNotExists(new File(tmpFn)));
             writer = new OutputStreamWriter(out);
 
-            if (whilelist){
+            if (whilelist && HostsApp.getWhilelist() != null){
                 Set<String> hostSet = new HashSet<>();
                 for (Host host : HostsApp.getWhilelist()){
                     if (!hostSet.contains(host.getHostName())){
@@ -425,17 +425,14 @@ public class HostsManager {
                                 }else{
                                     host1.setIp(host.getIp());
                                 }
-
                             }
-                            writer.append(host1.toString()).append(LINE_SEPARATOR);
                         }
                         hostSet.add(host.getHostName());
                     }
                 }
-            }else{
-                for (Host host : getHosts(false)) {
-                    writer.append(host.toString()).append(LINE_SEPARATOR);
-                }
+            }
+            for (Host host : getHosts(false)) {
+                writer.append(host.toString()).append(LINE_SEPARATOR);
             }
 
             writer.flush();
